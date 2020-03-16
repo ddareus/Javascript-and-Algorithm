@@ -1,6 +1,7 @@
 let ourForm = document.getElementById('ourForm');
 let ourField = document.getElementById('ourField');
 let ourList = document.getElementById('ourList');
+let toDoForm = document.getElementById('ourForm');
 
 ourForm.addEventListener('submit', e => {
 	e.preventDefault();
@@ -12,6 +13,19 @@ function createItem(x) {
 	ourList.insertAdjacentHTML('beforeend', ourHTML);
 	ourField.value = '';
 	ourField.focus();
+}
+
+if (!toDoForm.addEventListener) {
+	toDoForm.attachEvent('onsubmit', checkForm);
+} else {
+	toDoForm.addEventListener('submit', checkForm, false);
+}
+
+function checkForm(e) {
+	if (toDoForm.elements['toDoInput'].value == '') {
+		e.preventDefault();
+		alert('Please add an item in the field before clicking the create button!');
+	}
 }
 
 function deleteItem(elementToDelete) {
