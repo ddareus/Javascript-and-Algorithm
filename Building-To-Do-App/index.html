@@ -11,7 +11,7 @@
 
     <h1>To-Do App</h1>
 
-    <form id="ourForm" name="toDoForm">
+    <form id="ourForm" name="toDoForm" onsubmit="return validateForm()" method="post" required>
         <input id="ourField" type="text" autocomplete="off" name="toDoInput">
         <button>Create item</button>
     </form>

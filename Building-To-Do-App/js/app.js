@@ -1,7 +1,6 @@
 let ourForm = document.getElementById('ourForm');
 let ourField = document.getElementById('ourField');
 let ourList = document.getElementById('ourList');
-let toDoForm = document.getElementById('ourForm');
 
 ourForm.addEventListener('submit', e => {
 	e.preventDefault();
@@ -15,16 +14,11 @@ function createItem(x) {
 	ourField.focus();
 }
 
-if (!toDoForm.addEventListener) {
-	toDoForm.attachEvent('onsubmit', checkForm);
-} else {
-	toDoForm.addEventListener('submit', checkForm, false);
-}
-
-function checkForm(e) {
-	if (toDoForm.elements['toDoInput'].value == '') {
-		e.preventDefault();
+function validateForm() {
+	let x = document.forms['toDoForm']['toDoInput'].value;
+	if (x == '') {
 		alert('Please add an item in the field before clicking the create button!');
+		return false;
 	}
 }
 
